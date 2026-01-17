@@ -1,0 +1,568 @@
+OS Type: Windows 
+Computername: WIN-SF01JTM2DHI 
+Time stamp: 20210507_151521 
+Live Response Collection version: Live Response Collection (Cedarpelta Build - 20190905) 
+Live Response Collection script run: Triage_Windows_Live_Response.bat 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\ForensicImages" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\ForensicImages\Memory" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\ForensicImages\DiskImage" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\BasicInfo" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\UserInfo" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\NetworkInfo" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\PersistenceMechanisms" 
+ 
+ 
+*****Running module "InitialFolderSetup.bat" now***** 
+ 
+ 
+***** Module "InitialFolderSetup.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "lastactivityview.bat" now***** 
+ 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\lastactivityview\LastActivityView.exe" /shtml "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\BasicInfo\LastActivityView.html" 
+ 
+***** Module "lastactivityview.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "DiskSizes.bat" now***** 
+ 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" diskdrive list brief /format:list 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=0 get name 
+No hay instancias disponibles.
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=1 get name 
+No hay instancias disponibles.
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=2 get name 
+No hay instancias disponibles.
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=3 get name 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=5 get name 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=0 get size, caption 
+No hay instancias disponibles.
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=1 get size, caption 
+No hay instancias disponibles.
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=2 get size, caption 
+No hay instancias disponibles.
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=3 get size, caption 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logicaldisk where drivetype=5 get size, caption 
+ 
+***** Module "DiskSizes.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "Gateway-ARP-correlation.bat" now***** 
+ 
+ 		
+ 
+Installing WinPcap, C++ Redistributable Package (if needed), and running ARP Gateway Correlation. 
+Installing C++ Redistributable Package 
+  
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\nmap-6.47\vcredist_x64.exe" setup /q 
+  
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\nmap-6.47\vcredist_x86.exe" setup /q 			
+  
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\nmap-6.47\winpcap-nmap-4.13.exe" /S 
+  
+Command Run: for /f "tokens=2 delims=:" %i in ('ipconfig | findstr /i "Default gateway" |findstr [0-9]') do arp -a %i 
+  
+Command Run: for /f "tokens=2 delims=:" %i in ('ipconfig | findstr /i "Default gateway" |findstr [0-9]') do "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\nmap-6.47\nmap.exe" -A %i 	
+ 
+***** Module "Gateway-ARP-correlation.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "ExtractUSNJRNL-64bit.bat" now***** 
+ 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\usnjrnl" 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\ExtractUsnJrnl\ExtractUsnJrnl64.exe" C: "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\usnjrnl" 
+ExtractUsnJrnl v1.0.0.1
+
+Target filename: $UsnJrnl
+Target fileref: 79903
+Target MFT record offset: 0x00000000C4E07C00
+Parent filename: $Extend
+Parent fileref: 11
+Parent MFT record offset: 0x00000000C0002C00
+
+
+Trying volume offset 0x0000000214399000
+
+Trying volume offset 0x17F5E000
+
+Trying volume offset 0x0000000255040000
+
+Trying volume offset 0x00000002422EF000
+
+Trying volume offset 0x00000002AFBE7000
+
+Trying volume offset 0x00000002429C2000
+
+Trying volume offset 0x00000002AF4A4000
+
+Trying volume offset 0x00000001492CB000
+
+Trying volume offset 0x00000002BB61A000
+
+Trying volume offset 0x00000002BC160000
+
+Trying volume offset 0x00000002BC6A8000
+
+Trying volume offset 0x00000002BCF44000
+
+Trying volume offset 0x00000002BD440000
+
+Trying volume offset 0x00000002C114C000
+
+Trying volume offset 0x00000002C7E6D000
+
+Trying volume offset 0x00000002C892D000
+
+Trying volume offset 0x187FE000
+
+Trying volume offset 0x00000002B2657000
+
+Trying volume offset 0x00000002BB073000
+
+Trying volume offset 0x00000002C34F8000
+
+Trying volume offset 0x0CFB6000
+
+Trying volume offset 0x00000002BC428000
+
+Trying volume offset 0x05282000
+
+Trying volume offset 0x05A01000
+
+Trying volume offset 0x00000000F9084000
+
+Trying volume offset 0x00000002C3B8D000
+
+Trying volume offset 0x00000002CCCB8000
+
+Trying volume offset 0x00000002BF349000
+
+Trying volume offset 0x00000000F256C000
+
+Trying volume offset 0x00000002B1393000
+
+Trying volume offset 0x14EAA000
+
+Trying volume offset 0x00000002BDDF6000
+
+Trying volume offset 0x00000000F981B000
+
+Trying volume offset 0x471E9000
+
+Trying volume offset 0x47289000
+
+Trying volume offset 0x00000000EFC1D000
+
+Trying volume offset 0x00000000EFCBD000
+
+Trying volume offset 0x00000002C7CBA000
+
+Trying volume offset 0x00000002C7CEA000
+
+Trying volume offset 0x00000000F0211000
+
+Trying volume offset 0x00000000F02C1000
+
+Trying volume offset 0x00000002B278B000
+
+Trying volume offset 0x00000002B27CB000
+
+Trying volume offset 0x12DAD000
+
+Trying volume offset 0x00000002D59AF000
+
+Trying volume offset 0x00000002D7326000
+
+Trying volume offset 0x00000002D22A9000
+
+Trying volume offset 0x00000002FD25B000
+
+Trying volume offset 0x00000003029A8000
+ 
+***** Module "ExtractUSNJRNL-64bit.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "forecopy-copying.bat" now***** 
+ 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\forecopy\forecopy_handy.exe" -empgixc "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\logfile" 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\forecopy\forecopy_handy.exe" -f "C:\$LogFile" "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\logfile" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\amcache" 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\forecopy\forecopy_handy.exe" -f "C:\Windows\AppCompat\Programs\Amcache.hve" "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\amcache" 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\hosts" 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\forecopy\forecopy_handy.exe" -f "C:\Windows\System32\drivers\etc\hosts" "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\hosts" 
+ 
+***** Module "forecopy-copying.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "srum-copying.bat" now***** 
+ 
+ 
+Command Run: mkdir "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\SRUMDB" 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\RawCopy\RawCopy64.exe" "C:\Windows\System32\sru\SRUDB.dat" "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles\SRUMDB" 
+RawCopy v1.0.0.9
+
+Error: File not found in Param1: C:\Windows\System32\sru\SRUDB.dat
+Error: NtOpenFile returned: 0xC000003A
+Opening target file failed, now re-trying with INDX method from parent folder
+Error: Cannot get IndexNumber of parent folder
+ 
+***** Module "srum-copying.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "forecopy-log-copying.bat" now***** 
+ 
+ 
+Command Run: copy "C:\Users\Administrador\Desktop\Windows_Live_Response\forecopy_handy.log" "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\CopiedFiles" 
+        1 archivo(s) copiado(s).
+ 
+Command Run: del /F "C:\Users\Administrador\Desktop\Windows_Live_Response\forecopy_handy.log" 
+ 
+***** Module "forecopy-log-copying.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "Hashing-64bit.bat" now***** 
+ 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\md5deep64.exe" -u -t -r "C:\ProgramData\Microsoft\Windows\Start Menu\*" 
+C:\ProgramData\Microsoft\Windows\Start Menu\Programas: Junction point, skipping
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\md5deep64.exe" -u -t -r "C:\Windows\system32\*" 
+C:\Windows\system32\config\BBI: Permission denied
+C:\Windows\system32\config\BBI.LOG1: Permission denied
+C:\Windows\system32\config\BBI.LOG2: Permission denied
+C:\Windows\system32\config\DEFAULT: Permission denied
+C:\Windows\system32\config\DEFAULT.LOG1: Permission denied
+C:\Windows\system32\config\DEFAULT.LOG2: Permission denied
+C:\Windows\system32\config\RegBack\DEFAULT: Permission denied
+C:\Windows\system32\config\RegBack\SAM: Permission denied
+C:\Windows\system32\config\RegBack\SECURITY: Permission denied
+C:\Windows\system32\config\RegBack\SOFTWARE: Permission denied
+C:\Windows\system32\config\RegBack\SYSTEM: Permission denied
+C:\Windows\system32\config\SAM: Permission denied
+C:\Windows\system32\config\SAM.LOG1: Permission denied
+C:\Windows\system32\config\SAM.LOG2: Permission denied
+C:\Windows\system32\config\SECURITY: Permission denied
+C:\Windows\system32\config\SECURITY.LOG1: Permission denied
+C:\Windows\system32\config\SECURITY.LOG2: Permission denied
+C:\Windows\system32\config\SOFTWARE: Permission denied
+C:\Windows\system32\config\SOFTWARE.LOG1: Permission denied
+C:\Windows\system32\config\SOFTWARE.LOG2: Permission denied
+C:\Windows\system32\config\SYSTEM: Permission denied
+C:\Windows\system32\config\SYSTEM.LOG1: Permission denied
+C:\Windows\system32\config\SYSTEM.LOG2: Permission denied
+C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\Windows\Notifications\WPNPRMRY.tmp: Permission denied
+C:\Windows\system32\LogFiles\Sum\Current.jfm: Permission denied
+C:\Windows\system32\LogFiles\Sum\Current.mdb: Permission denied
+C:\Windows\system32\LogFiles\Sum\Svc.log: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat.LOG1: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat.LOG2: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat{10257d05-af19-11eb-a0b9-0800279357bc}.TM.blf: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat{10257d05-af19-11eb-a0b9-0800279357bc}.TMContainer00000000000000000001.regtrans-ms: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat{10257d05-af19-11eb-a0b9-0800279357bc}.TMContainer00000000000000000002.regtrans-ms: Permission denied
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\md5deep64.exe" -u -t -r "C:\Temp\*" 
+C:\Temp\*: No such file or directory
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\md5deep64.exe" -u -t -r "C:\Users\ADMINI~1\AppData\Local\Temp\*" 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\sha256deep64.exe" -u -t -r "C:\ProgramData\Microsoft\Windows\Start Menu\*" 
+C:\ProgramData\Microsoft\Windows\Start Menu\Programas: Junction point, skipping
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\sha256deep64.exe" -u -t -r "C:\Windows\system32\*" 
+C:\Windows\system32\config\BBI: Permission denied
+C:\Windows\system32\config\BBI.LOG1: Permission denied
+C:\Windows\system32\config\BBI.LOG2: Permission denied
+C:\Windows\system32\config\DEFAULT: Permission denied
+C:\Windows\system32\config\DEFAULT.LOG1: Permission denied
+C:\Windows\system32\config\DEFAULT.LOG2: Permission denied
+C:\Windows\system32\config\RegBack\DEFAULT: Permission denied
+C:\Windows\system32\config\RegBack\SAM: Permission denied
+C:\Windows\system32\config\RegBack\SECURITY: Permission denied
+C:\Windows\system32\config\RegBack\SOFTWARE: Permission denied
+C:\Windows\system32\config\RegBack\SYSTEM: Permission denied
+C:\Windows\system32\config\SAM: Permission denied
+C:\Windows\system32\config\SAM.LOG1: Permission denied
+C:\Windows\system32\config\SAM.LOG2: Permission denied
+C:\Windows\system32\config\SECURITY: Permission denied
+C:\Windows\system32\config\SECURITY.LOG1: Permission denied
+C:\Windows\system32\config\SECURITY.LOG2: Permission denied
+C:\Windows\system32\config\SOFTWARE: Permission denied
+C:\Windows\system32\config\SOFTWARE.LOG1: Permission denied
+C:\Windows\system32\config\SOFTWARE.LOG2: Permission denied
+C:\Windows\system32\config\SYSTEM: Permission denied
+C:\Windows\system32\config\SYSTEM.LOG1: Permission denied
+C:\Windows\system32\config\SYSTEM.LOG2: Permission denied
+C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\Windows\Notifications\WPNPRMRY.tmp: Permission denied
+C:\Windows\system32\LogFiles\Sum\Current.jfm: Permission denied
+C:\Windows\system32\LogFiles\Sum\Current.mdb: Permission denied
+C:\Windows\system32\LogFiles\Sum\Svc.log: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat.LOG1: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat.LOG2: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat{10257d05-af19-11eb-a0b9-0800279357bc}.TM.blf: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat{10257d05-af19-11eb-a0b9-0800279357bc}.TMContainer00000000000000000001.regtrans-ms: Permission denied
+C:\Windows\system32\Microsoft\Protect\Recovery\Recovery.dat{10257d05-af19-11eb-a0b9-0800279357bc}.TMContainer00000000000000000002.regtrans-ms: Permission denied
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\sha256deep64.exe" -u -t -r "C:\Temp\*" 
+C:\Temp\*: No such file or directory
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\md5deep-4.4\sha256deep64.exe" -u -t -r "C:\Users\ADMINI~1\AppData\Local\Temp\*" 
+ 
+***** Module "Hashing-64bit.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "netstatanb.bat" now***** 
+ 
+ 
+Command Run: netstat -anb 
+ 
+***** Module "netstatanb.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "AMP-db-copying.bat" now***** 
+ 
+ 
+***Testing to ensure AMP databases are present 
+ 
+ 
+AMP database(s) not detected on this system 
+ 	
+ 
+***** Module "AMP-db-copying.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "prcview.bat" now***** 
+ 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\PrcView\pv.exe" -el 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\PrcView\pv.exe" -e 
+ 
+***** Module "prcview.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "Windows-System-Commands.bat" now***** 
+ 
+ 
+Command Run: chcp 
+ 
+Command Run: dir /S /O-D "C:\" 
+ 
+Command Run: findstr /L ? "C:\Users\ADMINI~1\Desktop\WINDOW~1\WIN-SF01JTM2DHI_20210507_151521\LiveResponseData\BasicInfo\Full_file_listing.txt" 
+ 
+Command Run: dir /S /B /AHD "C:\" 
+ 
+Command Run: ver 
+ 
+Command Run: systeminfo 
+ 
+Command Run: time/T 
+ 
+Command Run: date/T 
+ 
+Command Run: w32tm /tz 
+ 
+Command Run: schtasks /query /fo LIST /v 
+ 
+Command Run: tasklist /V 
+ 
+Command Run: tasklist /M 
+ 
+Command Run: tasklist /SVC 
+ 
+***** Module "Windows-System-Commands.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "Winutils.bat" now***** 
+ 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\winutils\whoami.exe" 
+ 
+***** Module "Winutils.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "nbtstat-cports.bat" now***** 
+ 
+ 
+Command Run: "C:\Windows\sysnative\nbtstat.exe" -c 
+ 
+Command Run: "C:\Windows\sysnative\nbtstat.exe" -S 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\cports-x64\cports.exe" /shtml "" /sort 1 /sort ~"Remote Address" 
+ 
+***** Module "nbtstat-cports.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "WMIC.bat" now***** 
+ 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" product get Name, Version 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" sysdriver list full 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" startup list full 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" logon list full 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" loadorder list full 
+ 
+Command Run: "C:\Windows\system32\wbem\WMIC.exe" os get BootDevice, CSName, EncryptionLevel, InstallDate, LastBootUpTime, Name, Version, BuildNumber, CSDVersion /value 
+ 
+***** Module "WMIC.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "Sysinternals.bat" now***** 
+ 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\AutoRuns /v EulaAccepted 	
+Registry entry for AutoRuns EULA not found. The AutoRun folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\autorunsc64.exe" -s -h -m -a * /accepteula 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\autorunsc64.exe" -c -s -h -m -a * /accepteula 
+
+Sysinternals Autoruns v13.94 - Autostart program viewer
+Copyright (C) 2002-2019 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+
+Sysinternals Autoruns v13.94 - Autostart program viewer
+Copyright (C) 2002-2019 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+Command Run: REG DELETE "HKCU\Software\Sysinternals\AutoRuns" /f 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\psfile /v EulaAccepted 
+Registry entry for PsFile EULA not found. The PsFile folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\psfile.exe" /accepteula 	
+
+PsFile v1.03 - Lists files and directories opened remotely
+Copyright (C) 2001-2016 Mark Russinovich
+Sysinternals
+
+ 
+Command Run: REG DELETE "HKCU\Software\Sysinternals\psfile" /f 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\PsInfo /v EulaAccepted 
+Registry entry for PsInfo EULA not found. The PsInfo folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\PsInfo.exe" /accepteula 	
+
+PsInfo v1.78 - Local and remote system information viewer
+Copyright (C) 2001-2016 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+Querying information for WIN-SF01JTM2DHI... 
+Command Run: REG DELETE "HKCU\Software\Sysinternals\PsInfo" /f 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\PsList /v EulaAccepted 
+Registry entry for PsList EULA not found. The PsList folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\pslist.exe" /accepteula 	
+
+PsList v1.4 - Process information lister
+Copyright (C) 2000-2016 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+ 
+Command Run: REG DELETE "HKCU\Software\Sysinternals\PsList" /f 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\PsLoggedon /v EulaAccepted 
+Registry entry for PsLoggedon EULA not found. The PsLoggedon folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\PsLoggedon.exe" /accepteula 	
+
+PsLoggedon v1.35 - See who's logged on
+Copyright (C) 2000-2016 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+ 
+Command Run: REG DELETE "HKCU\Software\Sysinternals\PsLoggedon" /f 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\PsLoglist /v EulaAccepted 
+Registry entry for PsLoglist EULA not found. The PsLoglist folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\PsLoglist.exe" /accepteula 	
+
+PsLoglist v2.81 - local and remote event log viewer
+Copyright (C) 2000-2019 Mark Russinovich
+Sysinternals - www.sysinternals.com
+
+ 
+Command Run: REG DELETE "HKCU\Software\Sysinternals\PsLoglist" /f 
+ 
+Command Run: REG QUERY HKCU\SOFTWARE\Sysinternals\TCPView /v EulaAccepted 
+Registry entry for TCPView EULA not found. The TCPView folder will be deleted upon completion 
+ 
+Command Run: "C:\Users\ADMINI~1\Desktop\WINDOW~1\Tools\SysinternalsSuite\Tcpvcon.exe" -a /accepteula 	
+
+TCPView v3.01 - TCP/UDP endpoint viewer
+Copyright (C) 1998-2010 Mark Russinovich and Bryce Cogswell
+Sysinternals - www.sysinternals.com
+
+ 
+Command Run: REG DELETE "HKCU\Software\Sysinternals\TCPView" /f 
+ 
+Skipping streams, as streams is enabled by default on this OS version. 
+ 
+***** Module "Sysinternals.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 
+ 
+*****Running module "FinalProcessingDetails.bat" now***** 
+ 
+ 
+***** Module "FinalProcessingDetails.bat" has completed. ***** 
+***** Returning to Triage_Windows_Live_Response.bat ***** 
+ 

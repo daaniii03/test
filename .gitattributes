@@ -1,4 +1,7 @@
 LiveResponseData/** filter=lfs diff=lfs merge=lfs -text
+'LiveResponseData/CopiedFiles/mft/$MFT' filter=lfs diff=lfs merge=lfs -text
+'LiveResponseData/CopiedFiles/logfile/$LogFile' filter=lfs diff=lfs merge=lfs -text
+'LiveResponseData/CopiedFiles/registry/SOFTWARE' filter=lfs diff=lfs merge=lfs -text
 'LiveResponseData/CopiedFiles/mft/$MFT filter=lfs diff=lfs merge=lfs -text
 LiveResponseData/CopiedFiles/logfile/$LogFile filter=lfs diff=lfs merge=lfs -text
 LiveResponseData/CopiedFiles/registry/SOFTWARE' filter=lfs diff=lfs merge=lfs -text
